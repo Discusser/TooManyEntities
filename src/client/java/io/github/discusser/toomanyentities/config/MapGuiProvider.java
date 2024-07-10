@@ -11,6 +11,7 @@ import net.minecraft.text.Text;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class MapGuiProvider implements GuiProvider {
             return entries;
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             TooManyEntitiesClient.LOGGER.error("Field '{}' was not found in config object and an instance of type '{}' could not be cast to Map<Object, Object>", field, field.getType());
-            throw new RuntimeException(e);
+            return Collections.emptyList();
         }
     }
 }
