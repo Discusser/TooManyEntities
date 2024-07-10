@@ -17,7 +17,7 @@ public class TooManyEntitiesConfig implements ConfigData {
     public Integer maxEntityCount = 64;
     @ConfigEntry.Category(value = "general")
     @ConfigEntry.Gui.Tooltip()
-    public Boolean applyMaxEntityCountGlobally = true;
+    public Boolean applyMaxEntityCountGlobally = false;
 
     @ConfigEntry.Category(value = "entities")
     public TreeMap<String, Integer> entityMaxCounts = new TreeMap<>(Comparator.naturalOrder());

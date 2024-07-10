@@ -5,5 +5,5 @@
   "text.autoconfig.too-many-entities.option.maxEntityCount": "Max Entity Count",
   "text.autoconfig.too-many-entities.option.maxEntityCount.@Tooltip": "The maximum number of entities of a specific type to render. If this is set to 0, the limit is removed",
   "text.autoconfig.too-many-entities.option.applyMaxEntityCountGlobally": "Apply Max Entity Count Globally",
-  "text.autoconfig.too-many-entities.option.applyMaxEntityCountGlobally.@Tooltip": "If this option is enabled, the maximum entity count defined above will be used for every single entity type. If this option is disabled, each entity type will use its own maximum entity count",
+  "text.autoconfig.too-many-entities.option.applyMaxEntityCountGlobally.@Tooltip": "If this option is enabled, the maximum entity count defined above will be used for every single entity type. If this option is disabled, each entity type will use its own maximum entity count"
 }
