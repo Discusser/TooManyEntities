@@ -22,7 +22,7 @@
 			"io.github.discusser.toomanyentities.TooManyEntitiesClient"
 		],
 		"modmenu": [
-			"io.github.discusser.toomanyentities.mixin.TooManyEntitiesModMenuApiImpl"
+			"io.github.discusser.toomanyentities.TooManyEntitiesModMenuApiImpl"
 		]
 	},
 	"mixins": [
