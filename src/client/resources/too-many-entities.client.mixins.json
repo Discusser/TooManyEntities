@@ -2,7 +2,11 @@
 	"required": true,
 	"package": "io.github.discusser.toomanyentities.mixin.client",
 	"compatibilityLevel": "JAVA_21",
+	"plugin": "io.github.discusser.toomanyentities.mixin.client.EntityCullingMixinPlugin",
 	"client": [
+		"CommonWorldRendererMixin",
+		"DebugHudMixin",
+		"EntityCullingWorldRendererMixin",
 		"WorldRendererMixin"
 	],
 	"injectors": {

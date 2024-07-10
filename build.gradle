@@ -22,6 +22,17 @@ repositories {
         name = "Terraformers"
         url = "https://maven.terraformersmc.com/"
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 loom {
@@ -55,6 +66,10 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") {
         exclude(group: "net.fabricm.fabric-api")
     }
+
+    // Entity Culling
+//    implementation 'com.github.tr7zw:EntityCulling:1.6.6'
+    modImplementation "maven.modrinth:entityculling:1.6.6"
 }
 
 processResources {
