@@ -13,13 +13,16 @@
 	},
 	"license": "MIT",
 	"icon": "assets/too-many-entities/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"io.github.discusser.toomanyentities.TooManyEntities"
 		],
 		"client": [
 			"io.github.discusser.toomanyentities.TooManyEntitiesClient"
+		],
+		"modmenu": [
+			"io.github.discusser.toomanyentities.mixin.TooManyEntitiesModMenuApiImpl"
 		]
 	},
 	"mixins": [
@@ -35,6 +38,9 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
-	"suggests": {
+	"custom": {
+		"modmenu": {
+			"update_checker": true
+		}
 	}
 }
