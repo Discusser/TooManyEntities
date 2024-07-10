@@ -1,6 +1,5 @@
 package io.github.discusser.toomanyentities.config;
 
-import io.github.discusser.toomanyentities.TooManyEntities;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.impl.builders.BooleanToggleBuilder;
 import me.shedaniel.clothconfig2.impl.builders.IntFieldBuilder;

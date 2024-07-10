@@ -15,9 +15,6 @@
 	"icon": "assets/too-many-entities/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"io.github.discusser.toomanyentities.TooManyEntities"
-		],
 		"client": [
 			"io.github.discusser.toomanyentities.TooManyEntitiesClient"
 		],

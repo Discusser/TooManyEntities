@@ -1,0 +1,9 @@
+{
+  "config.too-many-entities.title": "Too Many Entities",
+  "category.too-many-entities.general": "General",
+  "category.too-many-entities.entities": "Entities",
+  "option.too-many-entities.maxEntityCount": "Max Entity Count",
+  "option.too-many-entities.maxEntityCount.tooltip": "The maximum number of entities of a specific type to render. If this is set to 0, the limit is removed",
+  "option.too-many-entities.applyMaxEntityCountGlobally": "Apply Max Entity Count Globally",
+  "option.too-many-entities.applyMaxEntityCountGlobally.tooltip": ""
+}
