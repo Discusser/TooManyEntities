@@ -35,6 +35,10 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
+	"recommends": {
+		"entityculling": ">=1.6.4",
+		"modmenu": ">=10.0.0"
+	},
 	"custom": {
 		"modmenu": {
 			"update_checker": true
