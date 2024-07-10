@@ -17,7 +17,6 @@ import java.util.Map;
 public class TooManyEntitiesClient implements ClientModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("too-many-entities");
 	public static final String MODID = "too-many-entities";
-	public static Lazy<Boolean> entityCullingLoaded = Lazy.lazy(() -> FabricLoader.getInstance().isModLoaded("entityculling"));
 	public static final HashMap<String, Integer> entityCounts = new HashMap<>();
 
 	@Override

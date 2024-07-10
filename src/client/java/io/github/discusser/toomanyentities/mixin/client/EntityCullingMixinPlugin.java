@@ -1,7 +1,6 @@
 package io.github.discusser.toomanyentities.mixin.client;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.discusser.toomanyentities.TooManyEntitiesClient;
 import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
