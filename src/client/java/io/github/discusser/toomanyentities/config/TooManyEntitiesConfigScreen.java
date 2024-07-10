@@ -25,17 +25,17 @@ public class TooManyEntitiesConfigScreen extends Screen {
         general.addEntry(TooManyEntitiesConfig.createIntField(
                         entryBuilder,
                         "maxEntityCount",
-                        TooManyEntitiesConfig.maxEntityCount,
+                        TooManyEntitiesConfig.instance.maxEntityCount,
                         0)
-                .setSaveConsumer(value -> TooManyEntitiesConfig.maxEntityCount = value)
+                .setSaveConsumer(value -> TooManyEntitiesConfig.instance.maxEntityCount = value)
                 .setMin(0)
                 .build());
         general.addEntry(TooManyEntitiesConfig.createBooleanToggle(
                         entryBuilder,
                         "applyMaxEntityCountGlobally",
-                        TooManyEntitiesConfig.applyMaxEntityCountGlobally,
+                        TooManyEntitiesConfig.instance.applyMaxEntityCountGlobally,
                         true)
-                .setSaveConsumer(value -> TooManyEntitiesConfig.applyMaxEntityCountGlobally = value)
+                .setSaveConsumer(value -> TooManyEntitiesConfig.instance.applyMaxEntityCountGlobally = value)
                 .build());
 //        general.addEntry(entryBuilder
 //                .startIntField(Text.translatable("option.too-many-entities.maxEntityCount"), TooManyEntitiesConfig.maxEntityCount)
