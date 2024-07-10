@@ -8,8 +8,7 @@
 		"Discusser"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Discusser/TooManyEntities"
 	},
 	"license": "MIT",
 	"icon": "assets/too-many-entities/icon.png",
