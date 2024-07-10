@@ -9,7 +9,6 @@ import net.fabricmc.api.ClientModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class TooManyEntitiesClient implements ClientModInitializer {
@@ -20,7 +19,7 @@ public class TooManyEntitiesClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		AutoConfig.register(TooManyEntitiesConfig.class, GsonConfigSerializer::new);
 		GuiRegistry registry = AutoConfig.getGuiRegistry(TooManyEntitiesConfig.class);
-		registry.registerTypeProvider(new MapGuiProvider(), Map.class);
+		registry.registerPredicateProvider(new MapGuiProvider(), field -> Map.class.isAssignableFrom(field.getType()));
 		TooManyEntitiesConfig.instance = AutoConfig.getConfigHolder(TooManyEntitiesConfig.class).getConfig();
 	}
 }

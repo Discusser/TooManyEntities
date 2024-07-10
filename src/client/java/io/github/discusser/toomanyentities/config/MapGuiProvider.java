@@ -21,7 +21,10 @@ public class MapGuiProvider implements GuiProvider {
     @SuppressWarnings({"rawtypes", "unchecked"})
     public List<AbstractConfigListEntry> get(String i18n, Field field, Object config, Object defaults, GuiRegistryAccess registry) {
         try {
-            Map<Object, Object> map = (Map<Object, Object>) Utils.getUnsafely(field, config, field.getType().getDeclaredConstructor().newInstance());
+            Map<Object, Object> map = Utils.getUnsafely(field, config);
+            if (map == null) {
+                map = (Map<Object, Object>) field.getType().getDeclaredConstructor().newInstance();
+            }
             Map<Object, Object> defaultMap = Utils.getUnsafely(field, defaults);
             List<AbstractConfigListEntry> entries = new ArrayList<>();
 
