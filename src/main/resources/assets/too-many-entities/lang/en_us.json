@@ -1,9 +1,9 @@
 {
-  "config.too-many-entities.title": "Too Many Entities",
-  "category.too-many-entities.general": "General",
-  "category.too-many-entities.entities": "Entities",
-  "option.too-many-entities.maxEntityCount": "Max Entity Count",
-  "option.too-many-entities.maxEntityCount.tooltip": "The maximum number of entities of a specific type to render. If this is set to 0, the limit is removed",
-  "option.too-many-entities.applyMaxEntityCountGlobally": "Apply Max Entity Count Globally",
-  "option.too-many-entities.applyMaxEntityCountGlobally.tooltip": ""
+  "text.autoconfig.too-many-entities.title": "Too Many Entities",
+  "text.autoconfig.too-many-entities.category.general": "General",
+  "text.autoconfig.too-many-entities.category.entities": "Entities",
+  "text.autoconfig.too-many-entities.option.maxEntityCount": "Max Entity Count",
+  "text.autoconfig.too-many-entities.option.maxEntityCount.@Tooltip": "The maximum number of entities of a specific type to render. If this is set to 0, the limit is removed",
+  "text.autoconfig.too-many-entities.option.applyMaxEntityCountGlobally": "Apply Max Entity Count Globally",
+  "text.autoconfig.too-many-entities.option.applyMaxEntityCountGlobally.@Tooltip": "If this option enabled, the maximum entity count defined above will be used for every single entity type. If this option is disabled, each entity type will use its own maximum entity count"
 }
