@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "too-many-entities",
+	"version": "${version}",
+	"name": "Too Many Entities",
+	"description": "This mod allows you to hide extra entities in order to reduce lag, especially with mob farms. The mobs still exist in the world, they are just not visible.",
+	"authors": [
+		"Discusser"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/too-many-entities/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.discusser.toomanyentities.TooManyEntities"
+		],
+		"client": [
+			"io.github.discusser.toomanyentities.TooManyEntitiesClient"
+		]
+	},
+	"mixins": [
+		"too-many-entities.mixins.json",
+		{
+			"config": "too-many-entities.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
