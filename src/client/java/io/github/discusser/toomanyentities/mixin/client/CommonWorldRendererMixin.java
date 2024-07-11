@@ -22,4 +22,9 @@ public class CommonWorldRendererMixin {
             info.cancel();
         }
     }
+
+    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/WorldRenderer;regularEntityCount:I", ordinal = 0))
+    private void afterEntityCountReset(CallbackInfo info) {
+        TooManyEntitiesClient.entityCounts.clear();
+    }
 }

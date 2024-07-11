@@ -69,7 +69,7 @@ dependencies {
 
     // Entity Culling
 //    implementation 'com.github.tr7zw:EntityCulling:1.6.6'
-    modImplementation "maven.modrinth:entityculling:1.6.6"
+    modImplementation "maven.modrinth:entityculling:${project.entityculling_version}"
 }
 
 processResources {
@@ -81,7 +81,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 21
+    it.options.release = project.java_version as Integer
 }
 
 java {
