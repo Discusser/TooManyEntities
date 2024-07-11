@@ -19,9 +19,12 @@ public class TooManyEntitiesClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		// Register our config class to AutoConfig
 		AutoConfig.register(TooManyEntitiesConfig.class, GsonConfigSerializer::new);
+		// Register our custom GUI providers and transformers
 		GuiRegistry registry = AutoConfig.getGuiRegistry(TooManyEntitiesConfig.class);
 		registry.registerPredicateProvider(new MapGuiProvider(), field -> Map.class.isAssignableFrom(field.getType()));
+
 		TooManyEntitiesConfig.instance = AutoConfig.getConfigHolder(TooManyEntitiesConfig.class).getConfig();
 	}
 }
