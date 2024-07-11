@@ -19,7 +19,6 @@ public class WorldRendererMixin {
     @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/WorldRenderer;regularEntityCount:I", ordinal = 1, shift = At.Shift.AFTER))
     private void afterEntityCountIncrement(CallbackInfo info, @Local Entity entity) {
         String key = entity.getType().getTranslationKey();
-        System.out.println(regularEntityCount + "\t and \t" + TooManyEntitiesClient.entityCounts.get("entity.minecraft.chicken"));
         TooManyEntitiesClient.entityCounts.put(key, TooManyEntitiesClient.entityCounts.getOrDefault(key, 0) + 1);
     }
 }
