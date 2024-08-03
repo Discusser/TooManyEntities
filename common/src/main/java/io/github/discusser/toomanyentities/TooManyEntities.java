@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 
 public final class TooManyEntities {
-    public static final Logger LOGGER = LoggerFactory.getLogger("too-many-entities");
-    public static final String MODID = "too-many-entities";
+    public static final Logger LOGGER = LoggerFactory.getLogger("too_many_entities");
+    public static final String MODID = "too_many_entities";
     public static final HashMap<String, Integer> entityCounts = new HashMap<>();
 
     public static void init() {

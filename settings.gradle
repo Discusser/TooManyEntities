@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'too-many-entities'
+rootProject.name = 'too_many_entities'
 
 include 'common'
 include 'fabric'
