@@ -1,5 +1,6 @@
 package io.github.discusser.toomanyentities;
 
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,5 +16,10 @@ public final class TooManyEntities {
 
     public static void initClient() {
 
+    }
+
+    @ExpectPlatform
+    public static boolean isModPresent(String modid) {
+        throw new AssertionError();
     }
 }
