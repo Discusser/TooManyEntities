@@ -1,12 +1,12 @@
 {
   "required": true,
-  "package": "io.github.discusser.toomanyentities.mixin",
+  "package": "io.github.discusser.toomanyentities.fabric.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "plugin": "io.github.discusser.toomanyentities.mixin.TooManyEntitiesMixinPlugin",
   "client": [
-    "client.DebugHudMixin",
-    "client.WorldRendererMixin"
+    "client.CommonWorldRendererMixin",
+    "client.EntityCullingWorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

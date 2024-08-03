@@ -1,13 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "MIT"
 
 [[mods]]
 modId = "too-many-entities"
 version = "${version}"
 displayName = "Too Many Entities"
-authors = "Me!"
+authors = "Discusser"
 description = '''
 This is an example description! Tell everyone what your mod is about!
 '''
