@@ -5,6 +5,7 @@ license = "MIT"
 
 [[mods]]
 modId = "too_many_entities"
+logoFile = "assets/too_many_entities/icon.png"
 version = "${version}"
 displayName = "Too Many Entities"
 authors = "Discusser"
