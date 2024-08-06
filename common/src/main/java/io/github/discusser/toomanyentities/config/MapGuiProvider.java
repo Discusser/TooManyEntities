@@ -1,4 +1,4 @@
-package io.github.discusser.toomanyentities.forge.config;
+package io.github.discusser.toomanyentities.config;
 
 import io.github.discusser.toomanyentities.TooManyEntities;
 import me.shedaniel.autoconfig.gui.registry.api.GuiProvider;

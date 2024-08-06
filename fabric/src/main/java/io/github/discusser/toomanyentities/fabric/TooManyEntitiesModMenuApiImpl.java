@@ -2,7 +2,7 @@ package io.github.discusser.toomanyentities.fabric;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import io.github.discusser.toomanyentities.fabric.config.TooManyEntitiesConfig;
+import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 
 public class TooManyEntitiesModMenuApiImpl implements ModMenuApi {

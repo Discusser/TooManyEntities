@@ -1,6 +1,5 @@
-package io.github.discusser.toomanyentities.forge.config;
+package io.github.discusser.toomanyentities.config;
 
-import dev.architectury.platform.Platform;
 import io.github.discusser.toomanyentities.TooManyEntities;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

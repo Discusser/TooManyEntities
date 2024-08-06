@@ -3,7 +3,7 @@ package io.github.discusser.toomanyentities.forge.mixin.client;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.tr7zw.entityculling.EntityCullingModBase;
 import io.github.discusser.toomanyentities.TooManyEntities;
-import io.github.discusser.toomanyentities.forge.config.TooManyEntitiesConfig;
+import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
