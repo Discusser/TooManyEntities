@@ -5,7 +5,6 @@
   "minVersion": "0.8",
   "plugin": "io.github.discusser.toomanyentities.mixin.TooManyEntitiesMixinPlugin",
   "client": [
-    "client.CommonWorldRendererMixin",
     "client.EntityCullingWorldRendererMixin"
   ],
   "injectors": {

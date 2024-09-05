@@ -9,5 +9,9 @@
   "text.autoconfig.too_many_entities.option.applyMaxEntityCountGlobally": "Apply Max Entity Count Globally",
   "text.autoconfig.too_many_entities.option.applyMaxEntityCountGlobally.@Tooltip": "If this option is enabled, the maximum entity count defined above will be used for every single entity type. If this option is disabled, each entity type will use its own maximum entity count",
   "text.autoconfig.too_many_entities.option.useEntityCulling": "Use Entity Culling",
-  "text.autoconfig.too_many_entities.option.useEntityCulling.@Tooltip": "If this option is enabled, and the mod Entity Culling is installed, the number of entities rendered will be taken from the entity culling mod. This allows you to have more visible entities without necessarily reducing performance. There can be flickering when using this option, so only enable it if you want to."
+  "text.autoconfig.too_many_entities.option.useEntityCulling.@Tooltip": "If this option is enabled, and the mod Entity Culling is installed, the number of entities rendered will be taken from the entity culling mod. This allows you to have more visible entities without necessarily reducing performance. There can be flickering when using this option, so only enable it if you want to.",
+  "key.too_many_entities.toggle_mod": "Toggle Mod",
+  "category.too_many_entities.too_many_entities": "Too Many Entities",
+  "text.too_many_entities.mod_enabled": "Too Many Entities enabled!",
+  "text.too_many_entities.mod_disabled": "Too Many Entities disabled!"
 }

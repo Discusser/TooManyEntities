@@ -4,17 +4,23 @@ import dev.architectury.platform.forge.EventBuses;
 import io.github.discusser.toomanyentities.TooManyEntities;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(TooManyEntities.MODID)
+@Mod.EventBusSubscriber(modid = TooManyEntities.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class TooManyEntitiesForge {
     public TooManyEntitiesForge() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::clientSetup);
+
         EventBuses.registerModEventBus(TooManyEntities.MODID, modEventBus);
 
         TooManyEntities.init();
@@ -24,5 +30,10 @@ public final class TooManyEntitiesForge {
         MinecraftForge.registerConfigScreen(screen -> AutoConfig.getConfigScreen(TooManyEntitiesConfig.class, screen).get());
 
         TooManyEntities.initClient();
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void registerBindings(RegisterKeyMappingsEvent event) {
+        TooManyEntities.registerKeyBindings();
     }
 }

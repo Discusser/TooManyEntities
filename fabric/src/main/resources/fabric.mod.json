@@ -31,7 +31,8 @@
     "java": ">=17",
     "architectury": ">=9.2.14",
     "fabric-api": "*",
-    "cloth-config": ">=11.1.118"
+    "cloth-config": ">=11.1.118",
+    "fabric-key-binding-api-v1": "*"
   },
   "recommends": {
     "entityculling": ">=1.6.6",
