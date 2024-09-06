@@ -2,6 +2,7 @@ package io.github.discusser.toomanyentities.forge;
 
 import dev.architectury.platform.forge.EventBuses;
 import io.github.discusser.toomanyentities.TooManyEntities;
+import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,8 +33,7 @@ public final class TooManyEntitiesForge {
         TooManyEntities.initClient();
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void registerBindings(RegisterKeyMappingsEvent event) {
-        TooManyEntities.registerKeyBindings();
+        event.register(TooManyEntitiesKeys.KEY_TOGGLE_MOD);
     }
 }
