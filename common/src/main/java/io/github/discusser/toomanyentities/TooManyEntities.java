@@ -1,21 +1,15 @@
 package io.github.discusser.toomanyentities;
 
-import com.mojang.blaze3d.systems.VertexSorter;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.MapGuiProvider;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TextColor;
-import net.minecraft.util.Colors;
 import net.minecraft.util.Formatting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
