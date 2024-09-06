@@ -1,7 +1,8 @@
-package io.github.discusser.toomanyentities.forge;
+package io.github.discusser.toomanyentities.neoforge;
 
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.LoadingModList;
+
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.LoadingModList;
 
 public class TooManyEntitiesImpl {
     public static boolean isModPresent(String modid) {
