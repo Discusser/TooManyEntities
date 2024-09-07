@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
+loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/Discusser/TooManyEntities/issues"
 license = "MIT"
 
@@ -16,37 +16,36 @@ This mod allows you to hide extra entities in order to reduce lag, especially wi
 [[dependencies.too_many_entities]]
 modId = "neoforge"
 type = "required"
-versionRange = "[20.6,)"
+versionRange = "[21.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.20.6,)"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "architectury"
 type = "required"
-versionRange = "[12.1.3,)"
+versionRange = "[13.0.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "cloth_config"
 type = "required"
-versionRange = "14.0.129"
+versionRange = "[15.0.0,)"
 
 [[dependencies.too_many_entities]]
 modId = "entityculling"
 type = "optional"
-versionRange = "1.7.0"
+versionRange = "[1.7.0,)"
 side = "CLIENT"
 
 [[mixins]]
 config = "too_many_entities-neoforge.mixins.json"
 [[mixins]]
 config = "too_many_entities.mixins.json"
-

@@ -42,7 +42,6 @@ dependencies {
     implementation(include("io.github.llamalad7:mixinextras-neoforge:0.4.0"))
 
     modApi("me.shedaniel.cloth:cloth-config-neoforge:$project.clothconfig_version")
-//    modImplementation "net.fabricmc:fabric-loader:$project.fabric_loader_version"
     modImplementation("maven.modrinth:entityculling:$project.entityculling_version-neoforge,$project.minecraft_version")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
@@ -53,7 +52,7 @@ processResources {
     inputs.property 'version', project.version
 
     filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: project.version
+        expand(version: project.version)
     }
 }
 
