@@ -17,10 +17,7 @@ public final class TooManyEntitiesForge {
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerBindings);
 
-//        EventBuses.registerModEventBus(TooManyEntities.MODID, modEventBus);
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> AutoConfig.getConfigScreen(TooManyEntitiesConfig.class, screen).get());
-
-        TooManyEntities.init();
     }
 
     private void clientSetup(FMLClientSetupEvent ignoredEvent) {
