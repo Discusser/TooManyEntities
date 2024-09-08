@@ -30,7 +30,6 @@ public class TooManyEntitiesConfig implements ConfigData {
     public static TooManyEntitiesConfig instance = null;
 
     public TooManyEntitiesConfig() {
-        Registries.ENTITY_TYPE.stream().forEach(entityType -> entityMaxCounts.put(entityType.getTranslationKey(), 0));
     }
 
     @Override
