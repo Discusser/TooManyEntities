@@ -24,9 +24,6 @@ public final class TooManyEntities {
     public static boolean modEnabled = true;
 
 
-    public static void init() {
-    }
-
     public static void initClient() {
         AutoConfig.register(TooManyEntitiesConfig.class, GsonConfigSerializer::new);
         GuiRegistry registry = AutoConfig.getGuiRegistry(TooManyEntitiesConfig.class);

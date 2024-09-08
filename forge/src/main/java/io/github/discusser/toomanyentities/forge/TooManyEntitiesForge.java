@@ -21,8 +21,6 @@ public final class TooManyEntitiesForge {
         modEventBus.addListener(this::clientSetup);
 
         EventBuses.registerModEventBus(TooManyEntities.MODID, modEventBus);
-
-        TooManyEntities.init();
     }
 
     private void clientSetup(FMLClientSetupEvent ignoredEvent) {
