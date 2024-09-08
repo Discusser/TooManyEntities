@@ -15,7 +15,7 @@ public class CommonWorldRendererMixin {
     @Inject(method = "renderEntity", at = @At(value = "HEAD"), cancellable = true)
     private void beforeEntityRender(CallbackInfo info, @Local(argsOnly = true) Entity entity) {
         String key = entity.getType().getTranslationKey();
-        int maxEntityCount = TooManyEntitiesConfig.instance.applyMaxEntityCountGlobally ? TooManyEntitiesConfig.instance.maxEntityCount : TooManyEntitiesConfig.instance.entityMaxCounts.get(key);
+        int maxEntityCount = TooManyEntitiesConfig.instance.applyMaxEntityCountGlobally ? TooManyEntitiesConfig.instance.maxEntityCount : TooManyEntitiesConfig.instance.entityMaxCounts.getOrDefault(key, 0);
         if (TooManyEntities.modEnabled && maxEntityCount > 0 && TooManyEntities.entityCounts.getOrDefault(key, 0) > maxEntityCount) {
             info.cancel();
         }

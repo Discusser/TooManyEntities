@@ -1,6 +1,7 @@
 package io.github.discusser.toomanyentities;
 
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.event.events.common.LifecycleEvent;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.MapGuiProvider;
@@ -8,6 +9,7 @@ import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -23,15 +25,13 @@ public final class TooManyEntities {
     public static final HashMap<String, Integer> entityCounts = new HashMap<>();
     public static boolean modEnabled = true;
 
-
-    public static void init() {
-    }
-
     public static void initClient() {
         AutoConfig.register(TooManyEntitiesConfig.class, GsonConfigSerializer::new);
         GuiRegistry registry = AutoConfig.getGuiRegistry(TooManyEntitiesConfig.class);
         registry.registerPredicateProvider(new MapGuiProvider(), field -> Map.class.isAssignableFrom(field.getType()));
         TooManyEntitiesConfig.instance = AutoConfig.getConfigHolder(TooManyEntitiesConfig.class).getConfig();
+
+        LifecycleEvent.SETUP.register(() -> Registries.ENTITY_TYPE.stream().forEach(entityType -> TooManyEntitiesConfig.instance.entityMaxCounts.put(entityType.getTranslationKey(), 0)));
 
         ClientTickEvent.CLIENT_POST.register(minecraft -> {
             while (TooManyEntitiesKeys.KEY_TOGGLE_MOD.wasPressed()) {
