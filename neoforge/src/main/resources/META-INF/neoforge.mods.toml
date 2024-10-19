@@ -16,21 +16,21 @@ This mod allows you to hide extra entities in order to reduce lag, especially wi
 [[dependencies.too_many_entities]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.0,)"
+versionRange = "[21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,)"
+versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.2,)"
+versionRange = "[13.0.6,)"
 ordering = "AFTER"
 side = "BOTH"
 

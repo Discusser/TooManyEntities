@@ -19,7 +19,6 @@ public class TooManyEntitiesConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip()
     public Integer maxHostileCount = 64;
 
-
     @ConfigEntry.Category(value = "general")
     @ConfigEntry.Gui.Tooltip()
     public Integer maxPassiveCount = 64;
