@@ -4,7 +4,6 @@ import io.github.discusser.toomanyentities.TooManyEntities;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import net.minecraft.registry.Registries;
 
 import java.util.Comparator;
 import java.util.Map;

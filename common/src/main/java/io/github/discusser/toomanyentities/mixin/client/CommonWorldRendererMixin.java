@@ -2,7 +2,6 @@ package io.github.discusser.toomanyentities.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import io.github.discusser.toomanyentities.TooManyEntities;
-import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
