@@ -9,6 +9,9 @@ import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -47,5 +50,23 @@ public final class TooManyEntities {
     @ExpectPlatform
     public static boolean isModPresent(String modid) {
         throw new AssertionError();
+    }
+
+    public static int getMaxCountForEntity(Entity entity) {
+        TooManyEntitiesConfig cfg = TooManyEntitiesConfig.instance;
+        String key = entity.getType().getTranslationKey();
+        int maxCount = cfg.entityMaxCounts.getOrDefault(key, 0);
+        if (maxCount != 0) {
+            return maxCount;
+        }
+        if (entity instanceof PassiveEntity && cfg.applyMaxPassiveCount) {
+            return cfg.maxPassiveCount;
+        } else if (entity instanceof HostileEntity && cfg.applyMaxHostileCount) {
+            return cfg.maxHostileCount;
+        } else if (cfg.applyMaxEntityCount) {
+            return cfg.maxEntityCount;
+        }
+
+        return 0;
     }
 }

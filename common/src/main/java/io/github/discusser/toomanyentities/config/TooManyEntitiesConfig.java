@@ -15,9 +15,28 @@ public class TooManyEntitiesConfig implements ConfigData {
     @ConfigEntry.Category(value = "general")
     @ConfigEntry.Gui.Tooltip()
     public Integer maxEntityCount = 64;
+
     @ConfigEntry.Category(value = "general")
     @ConfigEntry.Gui.Tooltip()
-    public Boolean applyMaxEntityCountGlobally = false;
+    public Integer maxHostileCount = 64;
+
+
+    @ConfigEntry.Category(value = "general")
+    @ConfigEntry.Gui.Tooltip()
+    public Integer maxPassiveCount = 64;
+
+    @ConfigEntry.Category(value = "general")
+    @ConfigEntry.Gui.Tooltip()
+    public Boolean applyMaxEntityCount = false;
+
+    @ConfigEntry.Category(value = "general")
+    @ConfigEntry.Gui.Tooltip()
+    public Boolean applyMaxHostileCount = false;
+
+    @ConfigEntry.Category(value = "general")
+    @ConfigEntry.Gui.Tooltip()
+    public Boolean applyMaxPassiveCount = false;
+
     @ConfigEntry.Category(value = "general")
     @ConfigEntry.Gui.Tooltip()
     public Boolean useEntityCulling = false;
