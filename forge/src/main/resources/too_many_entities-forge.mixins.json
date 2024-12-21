@@ -1,7 +1,7 @@
 {
   "required": true,
-  "package": "io.github.discusser.toomanyentities.neoforge.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "package": "io.github.discusser.toomanyentities.forge.mixin",
+  "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "plugin": "io.github.discusser.toomanyentities.mixin.TooManyEntitiesMixinPlugin",
   "client": [

@@ -33,9 +33,12 @@ dependencies {
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
 
-    modApi("me.shedaniel.cloth:cloth-config-fabric:$project.clothconfig_version")
+    modApi("me.shedaniel.cloth:cloth-config-fabric:$project.clothconfig_version") {
+        exclude group: 'net.fabricmc', module: 'fabric-loader'
+        exclude group: 'net.fabricmc.fabric-api'
+    }
     modImplementation("com.terraformersmc:modmenu:$project.modmenu_version")
-    modImplementation("maven.modrinth:entityculling:$project.entityculling_version-fabric,$project.minecraft_version")
+    modImplementation("maven.modrinth:entityculling:$project.entityculling_version-mc$project.minecraft_version-fabric,$project.minecraft_version")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -43,9 +46,21 @@ dependencies {
 
 processResources {
     inputs.property 'version', project.version
+    inputs.property 'fabric_loader_version', rootProject.fabric_loader_version
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    inputs.property 'architectury_version', rootProject.architectury_api_version
+    inputs.property 'cloth_config_version', rootProject.clothconfig_version
+    inputs.property 'entity_culling_version', rootProject.entityculling_version
+    inputs.property 'mod_menu_version', rootProject.modmenu_version
 
     filesMatching('fabric.mod.json') {
-        expand version: project.version
+        expand version: project.version,
+                fabric_loader_version: rootProject.fabric_loader_version,
+                minecraft_version: rootProject.minecraft_version,
+                architectury_version: rootProject.architectury_api_version,
+                cloth_config_version: rootProject.clothconfig_version,
+                entity_culling_version: rootProject.entityculling_version,
+                mod_menu_version: rootProject.modmenu_version
     }
 }
 

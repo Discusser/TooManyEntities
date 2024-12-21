@@ -1,0 +1,76 @@
+plugins {
+    id 'com.github.johnrengelman.shadow'
+}
+
+loom {
+    forge {
+        mixinConfig "too_many_entities.mixins.json", "too_many_entities-forge.mixins.json"
+    }
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:$rootProject.forge_version"
+
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
+    modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version"
+
+    // Mixin extras
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.0"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:0.4.0"))
+
+    modApi("me.shedaniel.cloth:cloth-config-forge:$project.clothconfig_version")
+    modImplementation "net.fabricmc:fabric-loader:$project.fabric_loader_version"
+    modImplementation("maven.modrinth:entityculling:$project.entityculling_version-forge,$project.minecraft_version")
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'forge_loader_version', rootProject.forge_loader_version
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    inputs.property 'architectury_version', rootProject.architectury_api_version
+    inputs.property 'cloth_config_version', rootProject.clothconfig_version
+    inputs.property 'entity_culling_version', rootProject.entityculling_version
+
+    filesMatching('META-INF/mods.toml') {
+        expand version: project.version,
+                'forge_loader_version': rootProject.forge_loader_version,
+                'minecraft_version': rootProject.minecraft_version,
+                'architectury_version': rootProject.architectury_api_version,
+                'cloth_config_version': rootProject.clothconfig_version,
+                'entity_culling_version': rootProject.entityculling_version
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+}

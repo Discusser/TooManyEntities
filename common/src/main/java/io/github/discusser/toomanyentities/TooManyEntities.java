@@ -12,10 +12,10 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.PassiveEntity;
-import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,8 @@ public final class TooManyEntities {
         registry.registerPredicateProvider(new MapGuiProvider(), field -> Map.class.isAssignableFrom(field.getType()));
         TooManyEntitiesConfig.instance = AutoConfig.getConfigHolder(TooManyEntitiesConfig.class).getConfig();
 
-        LifecycleEvent.SETUP.register(() -> Registries.ENTITY_TYPE.stream().forEach(entityType -> TooManyEntitiesConfig.instance.entityMaxCounts.put(entityType.getTranslationKey(), 0)));
+        // On forge, initClient is called after FMLCommonSetup, so we have to do it manually for forge
+        LifecycleEvent.SETUP.register(() -> Registry.ENTITY_TYPE.stream().forEach(entityType -> TooManyEntitiesConfig.instance.entityMaxCounts.put(entityType.getTranslationKey(), 0)));
 
         ClientTickEvent.CLIENT_POST.register(minecraft -> {
             while (TooManyEntitiesKeys.KEY_TOGGLE_MOD.wasPressed()) {

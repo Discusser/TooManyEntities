@@ -1,4 +1,4 @@
-package io.github.discusser.toomanyentities.neoforge.mixin.client;
+package io.github.discusser.toomanyentities.forge.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.tr7zw.entityculling.EntityCullingModBase;
