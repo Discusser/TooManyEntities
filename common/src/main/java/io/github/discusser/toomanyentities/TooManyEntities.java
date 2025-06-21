@@ -25,7 +25,8 @@ import java.util.Map;
 public final class TooManyEntities {
     public static final Logger LOGGER = LoggerFactory.getLogger("too_many_entities");
     public static final String MODID = "too_many_entities";
-    public static final HashMap<String, Integer> entityCounts = new HashMap<>();
+    public static final HashMap<String, Integer> toRenderCount = new HashMap<>();
+    public static final HashMap<String, Integer> renderedCount = new HashMap<>();
     public static boolean modEnabled = true;
 
     public static void initClient() {
@@ -41,7 +42,7 @@ public final class TooManyEntities {
                 modEnabled = !modEnabled;
                 if (minecraft.player != null) {
                     String key = "text.too_many_entities.mod_" + (modEnabled ? "enabled" : "disabled");
-                    minecraft.player.sendMessage(Text.translatable(key).setStyle(Style.EMPTY.withColor(modEnabled ? Formatting.GREEN : Formatting.RED)));
+                    minecraft.player.sendMessage(Text.translatable(key).setStyle(Style.EMPTY.withColor(modEnabled ? Formatting.GREEN : Formatting.RED)), false);
                 }
             }
         });

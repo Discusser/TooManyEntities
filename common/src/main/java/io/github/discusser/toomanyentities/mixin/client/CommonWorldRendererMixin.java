@@ -15,13 +15,17 @@ public class CommonWorldRendererMixin {
     private void beforeEntityRender(CallbackInfo info, @Local(argsOnly = true) Entity entity) {
         String key = entity.getType().getTranslationKey();
         int maxEntityCount = TooManyEntities.getMaxCountForEntity(entity);
-        if (TooManyEntities.modEnabled && maxEntityCount > 0 && TooManyEntities.entityCounts.getOrDefault(key, 0) > maxEntityCount) {
+        if (TooManyEntities.modEnabled && maxEntityCount > 0 &&
+                TooManyEntities.renderedCount.getOrDefault(key, 0) >= maxEntityCount) {
             info.cancel();
+        } else {
+            TooManyEntities.renderedCount.put(key, TooManyEntities.renderedCount.getOrDefault(key, 0) + 1);
         }
     }
 
-    @Inject(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/WorldRenderer;regularEntityCount:I", ordinal = 0))
+    @Inject(method = "render", at = @At(value = "TAIL"))
     private void afterEntityCountReset(CallbackInfo info) {
-        TooManyEntities.entityCounts.clear();
+        TooManyEntities.toRenderCount.clear();
+        TooManyEntities.renderedCount.clear();
     }
 }

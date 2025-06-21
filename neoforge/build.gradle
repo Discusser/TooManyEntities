@@ -50,9 +50,16 @@ dependencies {
 
 processResources {
     inputs.property 'version', project.version
+    inputs.property 'neoforge_version', neoforge_version
+    inputs.property 'minecraft_version', minecraft_version
+    inputs.property 'architectury_api_version', architectury_api_version
+    inputs.property 'clothconfig_version', clothconfig_version
+    inputs.property 'entityculling_version', entityculling_version
 
     filesMatching('META-INF/neoforge.mods.toml') {
-        expand(version: project.version)
+        expand(version: project.version, neoforge_version: neoforge_version, minecraft_version: minecraft_version,
+                architectury_api_version: architectury_api_version, clothconfig_version: clothconfig_version,
+                entityculling_version: entityculling_version)
     }
 }
 

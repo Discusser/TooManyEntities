@@ -16,33 +16,33 @@ This mod allows you to hide extra entities in order to reduce lag, especially wi
 [[dependencies.too_many_entities]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1,)"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.6,)"
+versionRange = "[${architectury_api_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.too_many_entities]]
 modId = "cloth_config"
 type = "required"
-versionRange = "[15.0.0,)"
+versionRange = "[${clothconfig_version},)"
 
 [[dependencies.too_many_entities]]
 modId = "entityculling"
 type = "optional"
-versionRange = "[1.7.0,)"
+versionRange = "[${entityculling_version},)"
 side = "CLIENT"
 
 [[mixins]]
