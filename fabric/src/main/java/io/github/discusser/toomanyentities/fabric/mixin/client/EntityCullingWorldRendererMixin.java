@@ -23,12 +23,15 @@ public class EntityCullingWorldRendererMixin {
     @Shadow
     private List<Entity> renderedEntities;
 
-    @Inject(method = "render", at = @At(value = "FIELD", target="Lnet/minecraft/client/render/WorldRenderer;renderedEntitiesCount:I", ordinal = 0, shift = At.Shift.AFTER))
+    @Inject(method = "render",
+            at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/WorldRenderer;renderedEntitiesCount:I",
+                     ordinal = 0, shift = At.Shift.AFTER))
     private void afterEntityCountIncrement(CallbackInfo info) {
         int previous = too_many_entities$previousRenderedEntities;
         int current = EntityCullingModBase.instance.renderedEntities;
         int toRenderCount = current - previous;
         int passes = 0;
+
         for (Entity entity : renderedEntities) {
             String key = entity.getType().getTranslationKey();
             if (TooManyEntitiesConfig.instance.useEntityCulling) {
