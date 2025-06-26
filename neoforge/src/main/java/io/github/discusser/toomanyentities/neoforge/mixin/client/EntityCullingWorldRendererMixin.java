@@ -24,11 +24,11 @@ public class EntityCullingWorldRendererMixin {
             int previous = too_many_entities$previousRenderedEntities;
             int current = EntityCullingModBase.instance.renderedEntities;
             if (current - previous > 0) {
-                TooManyEntities.entityCounts.put(key, TooManyEntities.entityCounts.getOrDefault(key, 0) + current - previous);
+                TooManyEntities.toRenderCount.put(key, TooManyEntities.toRenderCount.getOrDefault(key, 0) + current - previous);
             }
             too_many_entities$previousRenderedEntities = current;
         } else {
-            TooManyEntities.entityCounts.put(key, TooManyEntities.entityCounts.getOrDefault(key, 0) + 1);
+            TooManyEntities.toRenderCount.put(key, TooManyEntities.toRenderCount.getOrDefault(key, 0) + 1);
         }
     }
 }

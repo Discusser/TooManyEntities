@@ -1,6 +1,5 @@
 package io.github.discusser.toomanyentities.mixin.client;
 
-import io.github.discusser.toomanyentities.TooManyEntities;
 import net.minecraft.client.gui.hud.DebugHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,6 +12,5 @@ import java.util.List;
 public class DebugHudMixin {
     @Inject(method = "getLeftText", at = @At(value = "TAIL"))
     public void getLeftText(CallbackInfoReturnable<List<String>> info) {
-        TooManyEntities.entityCounts.clear();
     }
 }
