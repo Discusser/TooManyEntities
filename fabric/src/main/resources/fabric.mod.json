@@ -26,17 +26,17 @@
     "too_many_entities-fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.0",
-    "minecraft": "~1.21",
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "~${minecraft_version}",
     "java": ">=21",
-    "architectury": ">=13.0.2",
+    "architectury": ">=${architectury_api_version}",
     "fabric-api": "*",
-    "cloth-config": ">=15.0.0",
+    "cloth-config": ">=${clothconfig_version}",
     "fabric-key-binding-api-v1": "*"
   },
   "recommends": {
-    "entityculling": ">=1.7.0",
-    "modmenu": ">=11.0.0"
+    "entityculling": ">=${entityculling_version}",
+    "modmenu": ">=${modmenu_version}"
   },
   "custom": {
     "modmenu": {

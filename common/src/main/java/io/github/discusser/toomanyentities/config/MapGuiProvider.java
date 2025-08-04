@@ -35,9 +35,11 @@ public class MapGuiProvider implements GuiProvider {
                     continue;
                 }
 
+                // If defaultMap is dynamically populated, then it might be empty,
+                // so we can just default to 0 if we don't find anything
                 entries.add(ENTRY_BUILDER
                         .startIntField(Text.translatable((String) entry.getKey()), (Integer) entry.getValue())
-                        .setDefaultValue(() -> (Integer) defaultMap.get(entry.getKey()))
+                        .setDefaultValue(() -> (Integer) defaultMap.getOrDefault(entry.getKey(), 0))
                         .setSaveConsumer(entry::setValue)
                         .build());
             }

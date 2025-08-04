@@ -42,7 +42,10 @@ dependencies {
     implementation(include("io.github.llamalad7:mixinextras-neoforge:0.4.0"))
 
     modApi("me.shedaniel.cloth:cloth-config-neoforge:$project.clothconfig_version")
+    
     modImplementation("maven.modrinth:entityculling:$project.entityculling_version-neoforge,$project.minecraft_version")
+    modImplementation "dev.tr7zw:TRansition:${project.transition_version}-neoforge-SNAPSHOT@jar"
+    modImplementation "dev.tr7zw:TRender:${project.trender_version}-neoforge-SNAPSHOT@jar"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
