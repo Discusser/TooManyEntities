@@ -30,7 +30,7 @@
     "minecraft": "~${minecraft_version}",
     "java": ">=21",
     "architectury": ">=${architectury_api_version}",
-    "fabric-api": "*",
+    "fabric-api": ">=${fabric_api_version}",
     "cloth-config": ">=${clothconfig_version}",
     "fabric-key-binding-api-v1": "*"
   },

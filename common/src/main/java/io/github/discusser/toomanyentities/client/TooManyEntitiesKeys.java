@@ -10,6 +10,6 @@ public class TooManyEntitiesKeys {
             "key.too_many_entities.toggle_mod",
             InputUtil.Type.KEYSYM,
             InputUtil.GLFW_KEY_O,
-            "category.too_many_entities.too_many_entities"
+            KeyBinding.Category.MISC
     );
 }

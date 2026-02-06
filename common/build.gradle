@@ -12,4 +12,5 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
     modCompileOnlyApi("me.shedaniel.cloth:cloth-config:$project.clothconfig_version")
+    modCompileOnlyApi("maven.modrinth:entityculling:$project.entityculling_version-fabric,$project.minecraft_version")
 }

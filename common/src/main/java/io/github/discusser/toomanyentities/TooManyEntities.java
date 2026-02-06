@@ -9,8 +9,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -51,16 +50,18 @@ public final class TooManyEntities {
         throw new AssertionError();
     }
 
-    public static int getMaxCountForEntity(Entity entity) {
+    public static int getMaxCountForEntity(EntityType<?> type) {
         TooManyEntitiesConfig cfg = TooManyEntitiesConfig.instance;
-        String key = entity.getType().getTranslationKey();
+        String key = type.getTranslationKey();
         int maxCount = cfg.entityMaxCounts.getOrDefault(key, 0);
         if (maxCount != 0) {
             return maxCount;
         }
-        if (entity instanceof PassiveEntity && cfg.applyMaxPassiveCount) {
+
+        boolean isPassive = type.getSpawnGroup().isPeaceful();
+        if (isPassive && cfg.applyMaxPassiveCount) {
             return cfg.maxPassiveCount;
-        } else if (entity instanceof HostileEntity && cfg.applyMaxHostileCount) {
+        } else if (!isPassive && cfg.applyMaxHostileCount) {
             return cfg.maxHostileCount;
         } else if (cfg.applyMaxEntityCount) {
             return cfg.maxEntityCount;

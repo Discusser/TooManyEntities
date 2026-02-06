@@ -6,7 +6,8 @@
   "plugin": "io.github.discusser.toomanyentities.mixin.TooManyEntitiesMixinPlugin",
   "client": [
     "client.CommonWorldRendererMixin",
-    "client.DebugHudMixin",
+    "client.EntityCullingWorldRendererMixin",
+    "client.EntityRenderManagerMixin",
     "client.WorldRendererMixin"
   ],
   "injectors": {
