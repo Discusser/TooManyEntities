@@ -1,8 +1,8 @@
 package io.github.discusser.toomanyentities.mixin;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.discusser.toomanyentities.ModChecker;
 import dev.architectury.injectables.targets.ArchitecturyTarget;
-import io.github.discusser.toomanyentities.TooManyEntities;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class TooManyEntitiesMixinPlugin implements IMixinConfigPlugin {
-    private static final Supplier<Boolean> entityCullingLoaded = () -> TooManyEntities.isModPresent("entityculling");
+    private static final Supplier<Boolean> entityCullingLoaded = () -> ModChecker.isModPresent("entityculling");
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
             "io.github.discusser.toomanyentities.mixin.client.DebugHudMixin", entityCullingLoaded,

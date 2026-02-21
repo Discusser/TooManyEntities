@@ -46,11 +46,6 @@ public final class TooManyEntities {
         });
     }
 
-    @ExpectPlatform
-    public static boolean isModPresent(String modid) {
-        throw new AssertionError();
-    }
-
     public static int getMaxCountForEntity(Entity entity) {
         TooManyEntitiesConfig cfg = TooManyEntitiesConfig.instance;
         String key = entity.getType().getTranslationKey();
