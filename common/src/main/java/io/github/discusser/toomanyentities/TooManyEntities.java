@@ -1,14 +1,12 @@
 package io.github.discusser.toomanyentities;
 
 import dev.architectury.event.events.client.ClientTickEvent;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.MapGuiProvider;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -43,11 +41,6 @@ public final class TooManyEntities {
                 }
             }
         });
-    }
-
-    @ExpectPlatform
-    public static boolean isModPresent(String modid) {
-        throw new AssertionError();
     }
 
     public static int getMaxCountForEntity(EntityType<?> type) {

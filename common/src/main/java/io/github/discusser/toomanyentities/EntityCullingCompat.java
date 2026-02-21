@@ -1,4 +1,4 @@
-package io.github.discusser.toomanyentities.compat;
+package io.github.discusser.toomanyentities;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.tr7zw.entityculling.versionless.EntityCullingVersionlessBase;

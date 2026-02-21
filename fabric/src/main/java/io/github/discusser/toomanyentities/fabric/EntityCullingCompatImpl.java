@@ -1,4 +1,4 @@
-package io.github.discusser.toomanyentities.compat.fabric;
+package io.github.discusser.toomanyentities.fabric;
 
 import dev.tr7zw.entityculling.EntityCullingModBase;
 import dev.tr7zw.entityculling.versionless.EntityCullingVersionlessBase;

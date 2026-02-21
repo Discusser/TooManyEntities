@@ -1,7 +1,7 @@
 package io.github.discusser.toomanyentities.mixin.client;
 
 import io.github.discusser.toomanyentities.TooManyEntities;
-import io.github.discusser.toomanyentities.compat.EntityCullingCompat;
+import io.github.discusser.toomanyentities.EntityCullingCompat;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
