@@ -1,13 +1,13 @@
 package io.github.discusser.toomanyentities.mixin.client;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.discusser.toomanyentities.TooManyEntities;
 import io.github.discusser.toomanyentities.access.WorldRendererAccess;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
-import net.minecraft.client.render.WorldRenderer;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-import net.minecraft.client.render.entity.state.EntityRenderState;
-import net.minecraft.client.render.state.WorldRenderState;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.state.level.LevelRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,22 +19,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mixin(WorldRenderer.class)
+@Mixin(LevelRenderer.class)
 public class CommonWorldRendererMixin implements WorldRendererAccess {
     @Unique
     Map<String, Map<EntityRenderState, Integer>> too_many_entities$distances = new HashMap<>();
 
-    @Inject(method = "pushEntityRenders", at = @At(value = "HEAD"))
-    private void renderEntities(MatrixStack matrices, WorldRenderState renderStates, OrderedRenderCommandQueue queue,
-            CallbackInfo ci) {
+    @Inject(method = "submitEntities", at = @At(value = "HEAD"))
+    private void beforeSubmitEntities(PoseStack poseStack, LevelRenderState renderStates, SubmitNodeCollector output, CallbackInfo ci) {
         if (TooManyEntitiesConfig.instance.hideBasedOnDistance) {
             too_many_entities$distances.clear();
 
             List<EntityRenderState> sortedEntities = renderStates.entityRenderStates.stream()
-                    .sorted(Comparator.comparingDouble(state -> state.squaredDistanceToCamera)).toList();
+                    .sorted(Comparator.comparingDouble(state -> state.distanceToCameraSq)).toList();
             Map<String, Integer> maxDistances = new HashMap<>();
             for (EntityRenderState entity : sortedEntities) {
-                String key = entity.entityType.getTranslationKey();
+                String key = entity.entityType.getDescriptionId();
                 if (!too_many_entities$distances.containsKey(key)) {
                     too_many_entities$distances.put(key, new HashMap<>());
                 }
@@ -45,8 +44,13 @@ public class CommonWorldRendererMixin implements WorldRendererAccess {
         }
     }
 
-    @Inject(method = "render", at = @At(value = "TAIL"))
-    private void afterEntityCountReset(CallbackInfo info) {
+    @Inject(method = "extractLevel", at = @At(value = "TAIL"))
+    private void afterEntityCountReset(
+            net.minecraft.client.DeltaTracker deltaTracker,
+            net.minecraft.client.Camera camera,
+            float deltaPartialTick,
+            CallbackInfo info
+    ) {
         TooManyEntities.toRenderCount.clear();
         TooManyEntities.renderedCount.clear();
     }

@@ -5,12 +5,14 @@ import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.MapGuiProvider;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.AutoConfigClient;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.minecraft.entity.EntityType;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,18 +28,18 @@ public final class TooManyEntities {
 
     public static void initClient() {
         AutoConfig.register(TooManyEntitiesConfig.class, GsonConfigSerializer::new);
-        GuiRegistry registry = AutoConfig.getGuiRegistry(TooManyEntitiesConfig.class);
+        GuiRegistry registry = AutoConfigClient.getGuiRegistry(TooManyEntitiesConfig.class);
         registry.registerPredicateProvider(new MapGuiProvider(), field -> Map.class.isAssignableFrom(field.getType()));
         TooManyEntitiesConfig.instance = AutoConfig.getConfigHolder(TooManyEntitiesConfig.class).getConfig();
         TooManyEntitiesConfig.populateEntityMaxCounts();
 
         ClientTickEvent.CLIENT_POST.register(minecraft -> {
-            while (TooManyEntitiesKeys.KEY_TOGGLE_MOD.wasPressed()) {
+            while (TooManyEntitiesKeys.KEY_TOGGLE_MOD.consumeClick()) {
                 modEnabled = !modEnabled;
                 if (minecraft.player != null) {
                     String key = "text.too_many_entities.mod_" + (modEnabled ? "enabled" : "disabled");
-                    minecraft.player.sendMessage(Text.translatable(key)
-                            .setStyle(Style.EMPTY.withColor(modEnabled ? Formatting.GREEN : Formatting.RED)), false);
+                    minecraft.player.sendSystemMessage(Component.translatable(key)
+                            .withStyle(Style.EMPTY.withColor(modEnabled ? ChatFormatting.GREEN : ChatFormatting.RED)));
                 }
             }
         });
@@ -45,13 +47,13 @@ public final class TooManyEntities {
 
     public static int getMaxCountForEntity(EntityType<?> type) {
         TooManyEntitiesConfig cfg = TooManyEntitiesConfig.instance;
-        String key = type.getTranslationKey();
+        String key = type.getDescriptionId();
         int maxCount = cfg.entityMaxCounts.getOrDefault(key, 0);
         if (maxCount != 0) {
             return maxCount;
         }
 
-        boolean isPassive = type.getSpawnGroup().isPeaceful();
+        boolean isPassive = type.getCategory() != MobCategory.MONSTER;
         if (isPassive && cfg.applyMaxPassiveCount) {
             return cfg.maxPassiveCount;
         } else if (!isPassive && cfg.applyMaxHostileCount) {

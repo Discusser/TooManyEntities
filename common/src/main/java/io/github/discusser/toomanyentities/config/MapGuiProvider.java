@@ -6,7 +6,7 @@ import me.shedaniel.autoconfig.gui.registry.api.GuiRegistryAccess;
 import me.shedaniel.autoconfig.util.Utils;
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -35,10 +35,8 @@ public class MapGuiProvider implements GuiProvider {
                     continue;
                 }
 
-                // If defaultMap is dynamically populated, then it might be empty,
-                // so we can just default to 0 if we don't find anything
                 entries.add(ENTRY_BUILDER
-                        .startIntField(Text.translatable((String) entry.getKey()), (Integer) entry.getValue())
+                        .startIntField(Component.translatable((String) entry.getKey()), (Integer) entry.getValue())
                         .setDefaultValue(() -> (Integer) defaultMap.getOrDefault(entry.getKey(), 0))
                         .setSaveConsumer(entry::setValue)
                         .build());

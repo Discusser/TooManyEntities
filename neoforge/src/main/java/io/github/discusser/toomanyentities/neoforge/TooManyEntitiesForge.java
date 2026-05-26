@@ -3,7 +3,7 @@ package io.github.discusser.toomanyentities.neoforge;
 import io.github.discusser.toomanyentities.TooManyEntities;
 import io.github.discusser.toomanyentities.client.TooManyEntitiesKeys;
 import io.github.discusser.toomanyentities.config.TooManyEntitiesConfig;
-import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.AutoConfigClient;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -17,7 +17,7 @@ public final class TooManyEntitiesForge {
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerBindings);
 
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> AutoConfig.getConfigScreen(TooManyEntitiesConfig.class, screen).get());
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> AutoConfigClient.getConfigScreen(TooManyEntitiesConfig.class, screen).get());
     }
 
     private void clientSetup(FMLClientSetupEvent ignoredEvent) {

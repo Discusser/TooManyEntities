@@ -1,15 +1,15 @@
 package io.github.discusser.toomanyentities.client;
 
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.KeyMapping;
 
 public class TooManyEntitiesKeys {
     public TooManyEntitiesKeys() {}
 
-    public static final KeyBinding KEY_TOGGLE_MOD = new KeyBinding(
+    public static final KeyMapping KEY_TOGGLE_MOD = new KeyMapping(
             "key.too_many_entities.toggle_mod",
-            InputUtil.Type.KEYSYM,
-            InputUtil.GLFW_KEY_O,
-            KeyBinding.Category.MISC
+            InputConstants.Type.KEYSYM,
+            InputConstants.KEY_O,
+            KeyMapping.Category.MISC
     );
 }

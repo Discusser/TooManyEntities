@@ -1,6 +1,6 @@
 package io.github.discusser.toomanyentities.access;
 
-import net.minecraft.client.render.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 
 import java.util.Map;
 

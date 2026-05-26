@@ -16,7 +16,7 @@ public class TooManyEntitiesMixinPlugin implements IMixinConfigPlugin {
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
             "io.github.discusser.toomanyentities.mixin.client.EntityCullingWorldRendererMixin", entityCullingLoaded,
-            "io.github.discusser.toomanyentities.mixin.client.WorldRendererMixin", () -> !entityCullingLoaded.get());
+            "io.github.discusser.toomanyentities.mixin.client.LevelRendererMixin", () -> !entityCullingLoaded.get());
 
     @Override
     public void onLoad(String mixinPackage) {
