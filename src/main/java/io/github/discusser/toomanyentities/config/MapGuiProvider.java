@@ -1,0 +1,53 @@
+package io.github.discusser.toomanyentities.config;
+
+import io.github.discusser.toomanyentities.TooManyEntitiesClient;
+import me.shedaniel.autoconfig.gui.registry.api.GuiProvider;
+import me.shedaniel.autoconfig.gui.registry.api.GuiRegistryAccess;
+import me.shedaniel.autoconfig.util.Utils;
+import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
+import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import net.minecraft.network.chat.Component;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+public class MapGuiProvider implements GuiProvider {
+    private static final ConfigEntryBuilder ENTRY_BUILDER = ConfigEntryBuilder.create();
+
+    @Override
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public List<AbstractConfigListEntry> get(String i18n, Field field, Object config, Object defaults, GuiRegistryAccess registry) {
+        try {
+            Map<Object, Object> map = Utils.getUnsafely(field, config);
+            if (map == null) {
+                map = (Map<Object, Object>) field.getType().getDeclaredConstructor().newInstance();
+            }
+            Map<Object, Object> defaultMap = Utils.getUnsafely(field, defaults);
+            List<AbstractConfigListEntry> entries = new ArrayList<>();
+
+            for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                if (!(entry.getValue() instanceof Integer)) {
+                    TooManyEntitiesClient.LOGGER.error("No GUI provider registered for field '{}'! Only Integer values are supported.", field);
+                    continue;
+                }
+
+                // If defaultMap is dynamically populated, then it might be empty,
+                // so we can just default to 0 if we don't find anything
+                entries.add(ENTRY_BUILDER
+                        .startIntField(Component.translatable((String) entry.getKey()), (Integer) entry.getValue())
+                        .setDefaultValue(() -> (Integer) defaultMap.getOrDefault(entry.getKey(), 0))
+                        .setSaveConsumer(entry::setValue)
+                        .build());
+            }
+
+            return entries;
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            TooManyEntitiesClient.LOGGER.error("Field '{}' was not found in config object and an instance of type '{}' could not be cast to Map<Object, Object>", field, field.getType());
+            return Collections.emptyList();
+        }
+    }
+}
