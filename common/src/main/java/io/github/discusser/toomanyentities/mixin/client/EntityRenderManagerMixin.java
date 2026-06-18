@@ -19,13 +19,12 @@ public class EntityRenderManagerMixin {
         String key = entity.entityType.getTranslationKey();
         int maxEntityCount = TooManyEntities.getMaxCountForEntity(entity.entityType);
 
-        boolean cancelRender;
+        // We only cancel a render if the render state meets explicit criteria
+        boolean cancelRender = false;
         if (TooManyEntitiesConfig.instance.hideBasedOnDistance) {
             var distances = ((WorldRendererAccess)MinecraftClient.getInstance().worldRenderer).too_many_entities$distances();
             if (distances.containsKey(key)) {
                 cancelRender = distances.get(key).getOrDefault(entity, 0) >= maxEntityCount;
-            } else {
-                cancelRender = true;
             }
         } else {
             cancelRender = TooManyEntities.renderedCount.getOrDefault(key, 0) >= maxEntityCount;
