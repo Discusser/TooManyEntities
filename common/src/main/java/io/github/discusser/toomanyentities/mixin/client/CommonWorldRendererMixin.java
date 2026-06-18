@@ -56,12 +56,10 @@ public class CommonWorldRendererMixin {
         String key = entity.getType().getTranslationKey();
         int maxEntityCount = TooManyEntities.getMaxCountForEntity(entity);
 
-        boolean cancelRender;
+        boolean cancelRender = false;
         if (TooManyEntitiesConfig.instance.hideBasedOnDistance) {
             if (too_many_entities$distances.containsKey(key)) {
                 cancelRender = too_many_entities$distances.get(key).getOrDefault(entity, 0) >= maxEntityCount;
-            } else {
-                cancelRender = true;
             }
         } else {
             cancelRender = TooManyEntities.renderedCount.getOrDefault(key, 0) >= maxEntityCount;
