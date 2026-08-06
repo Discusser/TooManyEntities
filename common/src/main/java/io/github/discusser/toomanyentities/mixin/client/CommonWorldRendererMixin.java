@@ -34,6 +34,8 @@ public class CommonWorldRendererMixin implements WorldRendererAccess {
                     .sorted(Comparator.comparingDouble(state -> state.squaredDistanceToCamera)).toList();
             Map<String, Integer> maxDistances = new HashMap<>();
             for (EntityRenderState entity : sortedEntities) {
+                if (entity.entityType == null) continue;
+
                 String key = entity.entityType.getTranslationKey();
                 if (!too_many_entities$distances.containsKey(key)) {
                     too_many_entities$distances.put(key, new HashMap<>());

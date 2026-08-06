@@ -21,6 +21,8 @@ public class WorldRendererMixin {
     @Inject(method = "fillEntityRenderStates", at = @At("TAIL"))
     private void afterEntityCountIncrement(CallbackInfo info) {
         for (EntityRenderState state : worldRenderState.entityRenderStates) {
+            if (state.entityType == null) continue;
+
             String key = state.entityType.getTranslationKey();
             TooManyEntities.toRenderCount.put(key, TooManyEntities.toRenderCount.getOrDefault(key, 0) + 1);
         }
