@@ -28,6 +28,9 @@ public class EntityCullingWorldRendererMixin {
         int passes = 0;
 
         for (EntityRenderState renderState : renderStates.entityRenderStates) {
+            //noinspection ConstantValue
+            if (renderState.entityType == null) continue;
+
             String key = renderState.entityType.getDescriptionId();
             if (TooManyEntitiesConfig.instance.useEntityCulling) {
                 if (passes < toRenderCount) {

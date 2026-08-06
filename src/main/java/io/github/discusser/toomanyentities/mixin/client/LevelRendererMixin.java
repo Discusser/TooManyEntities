@@ -25,6 +25,9 @@ public class LevelRendererMixin {
     private void afterEntityCountIncrement(Camera camera, Frustum frustum, DeltaTracker deltaTracker,
             LevelRenderState output, CallbackInfo info) {
         for (EntityRenderState state : levelRenderState.entityRenderStates) {
+            //noinspection ConstantValue
+            if (state.entityType == null) continue;
+
             String key = state.entityType.getDescriptionId();
             TooManyEntitiesClient.toRenderCount.put(key, TooManyEntitiesClient.toRenderCount.getOrDefault(key, 0) + 1);
         }
