@@ -17,6 +17,10 @@ public class EntityRenderDispatcherMixin {
     @Inject(method = "submit", at = @At(value = "HEAD"), cancellable = true)
     private <S extends EntityRenderState> void beforeEntityRender(CallbackInfo info,
             @Local(argsOnly = true, name = "renderState") S renderState) {
+        // See https://github.com/Discusser/TooManyEntities/issues/23
+        //noinspection ConstantValue
+        if (renderState == null || renderState.entityType == null) return;
+
         String key = renderState.entityType.getDescriptionId();
         int maxEntityCount = TooManyEntitiesClient.getMaxCountForEntity(renderState.entityType);
 
