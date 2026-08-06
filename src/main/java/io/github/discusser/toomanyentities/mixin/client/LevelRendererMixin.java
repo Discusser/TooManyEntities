@@ -24,6 +24,9 @@ public class LevelRendererMixin {
     private void afterEntityCountIncrement(PoseStack poseStack, LevelRenderState levelRenderState,
             SubmitNodeCollector output, CallbackInfo ci) {
         for (EntityRenderState state : levelRenderState.entityRenderStates) {
+            //noinspection ConstantValue
+            if (state.entityType == null) continue;
+
             String key = state.entityType.getDescriptionId();
             TooManyEntitiesClient.toRenderCount.put(key, TooManyEntitiesClient.toRenderCount.getOrDefault(key, 0) + 1);
         }
