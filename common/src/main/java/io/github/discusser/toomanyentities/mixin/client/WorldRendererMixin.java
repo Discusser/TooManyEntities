@@ -22,6 +22,8 @@ public class WorldRendererMixin {
     @Inject(method = "render", at = @At(value = "FIELD", target="Lnet/minecraft/client/render/WorldRenderer;renderedEntitiesCount:I", ordinal = 0, shift = At.Shift.AFTER))
     private void afterEntityCountIncrement(CallbackInfo info) {
         for (Entity entity : this.renderedEntities) {
+            if (entity.getType() == null) return;
+
             String key = entity.getType().getTranslationKey();
             TooManyEntities.toRenderCount.put(key, TooManyEntities.toRenderCount.getOrDefault(key, 0) + 1);
         }

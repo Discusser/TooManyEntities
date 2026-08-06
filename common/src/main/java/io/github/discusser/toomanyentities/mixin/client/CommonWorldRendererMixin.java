@@ -40,6 +40,8 @@ public class CommonWorldRendererMixin {
                     .sorted((a, b) -> Float.compare(a.distanceTo(client.player), b.distanceTo(client.player))).toList();
             Map<String, Integer> maxDistances = new HashMap<>();
             for (Entity entity : sortedEntities) {
+                if (entity.getType() == null) continue;
+
                 String key = entity.getType().getTranslationKey();
                 if (!too_many_entities$distances.containsKey(key)) {
                     too_many_entities$distances.put(key, new HashMap<>());
@@ -53,6 +55,8 @@ public class CommonWorldRendererMixin {
 
     @Inject(method = "renderEntity", at = @At(value = "HEAD"), cancellable = true)
     private void beforeEntityRender(CallbackInfo info, @Local(argsOnly = true) Entity entity) {
+        if (entity.getType() == null) return;
+
         String key = entity.getType().getTranslationKey();
         int maxEntityCount = TooManyEntities.getMaxCountForEntity(entity);
 

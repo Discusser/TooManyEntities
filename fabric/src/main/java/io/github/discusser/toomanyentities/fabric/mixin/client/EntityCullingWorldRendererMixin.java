@@ -33,6 +33,8 @@ public class EntityCullingWorldRendererMixin {
         int passes = 0;
 
         for (Entity entity : renderedEntities) {
+            if (entity.getType() == null) continue;
+
             String key = entity.getType().getTranslationKey();
             if (TooManyEntitiesConfig.instance.useEntityCulling) {
                 if (passes < toRenderCount) {
